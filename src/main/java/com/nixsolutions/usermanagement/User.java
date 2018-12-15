@@ -8,6 +8,55 @@ public class User {
 	private String firstname;
 	private String lastname;
 	private Date dateOfBithd;
+	private Date date;
+	private Object getId;
+
+
+	public User(String firstName, String lastName, Date now) {
+		this.firstname = firstName;
+		this.lastname = lastName;
+		this.dateOfBithd = date;
+	}
+
+	
+	public User(Long id, String firstName, String lastName, Date date) {
+		this.id = id;
+		this.firstname = firstName;
+		this.lastname = lastName;
+		this.dateOfBithd = date;
+	}
+
+
+
+	public User() {
+		
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == null) {
+			return false;
+		}
+		if (this == obj) {
+			return true;
+		}
+		if (this.getId() == null && ((User) obj).getId == null) {
+			return true;
+		}
+		return this.getId().equals(((User) obj).getId);
+	}
+
+	
+	@Override
+	public int hashCode() {
+		if (this.getId == null) {
+			return 0;
+		}
+		return this.getId().hashCode();
+	}
+	
+
 	public Long getId() {
 		return id;
 	}
@@ -29,8 +78,8 @@ public class User {
 	public Date getDateOfBithd() {
 		return dateOfBithd;
 	}
-	public void setDateOfBithd(Date dateOfBithd) {
-		this.dateOfBithd = dateOfBithd;
+	public void setDateOfBithd(Date date) {
+		this.dateOfBithd = date;
 	}
 	public Object getFullName() {
 		return getLastname() + ", " + getFirstname();
